@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import masktextfield.MaskTextField?>
+
+<!--  ?import masktextfield.MaskTextField?-->
+
+<AnchorPane fx:id="mainPane" prefHeight="664.0" prefWidth="1208.0" styleClass="myGradient" stylesheets="@../style/style.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.servicos.estatica.resicolor.controller.ConsultaController">
+   <children>
+      <Separator layoutX="2.0" layoutY="165.0" prefWidth="1206.0">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Separator>
+      <Separator orientation="VERTICAL" prefHeight="660.0" />
+      <Separator layoutX="310.0" layoutY="1.0" orientation="VERTICAL" prefHeight="164.0" />
+      <Separator layoutX="2.0" layoutY="42.0" prefWidth="1206.0" />
+      <Label layoutX="10.0" layoutY="8.0" text="Pesquisar lote de produção" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="320.0" layoutY="8.0" text="Resultados" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Button fx:id="btConsultar" layoutX="208.0" layoutY="105.0" mnemonicParsing="false" onAction="#findByLote" prefHeight="28.0" prefWidth="32.0" styleClass="btConsultar" stylesheets="@../style/style.css">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <LineChart fx:id="chartConsulta" createSymbols="false" layoutX="14.0" layoutY="168.0" legendVisible="false" prefHeight="429.0" prefWidth="1184.0" title="Temperatura x tempo">
+        <xAxis>
+          <CategoryAxis animated="false" gapStartAndEnd="false" side="BOTTOM" startMargin="0.0" tickLabelFill="WHITE" tickLabelGap="0.0" fx:id="xAxis">
+               <tickLabelFont>
+                  <Font size="12.0" />
+               </tickLabelFont>
+            </CategoryAxis>
+        </xAxis>
+        <yAxis>
+          <NumberAxis fx:id="yAxis" label="ºC" minorTickCount="1" side="LEFT" tickLabelFill="WHITE">
+               <tickLabelFont>
+                  <Font size="17.0" />
+               </tickLabelFont>
+            </NumberAxis>
+        </yAxis>
+      </LineChart>
+      <Label layoutX="409.0" layoutY="81.0" text="Lote" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="326.0" layoutY="56.0" text="Código do produto" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="343.0" layoutY="106.0" text="Quantidade (Kg)" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="342.0" layoutY="131.0" text="Produção (Kg/h)" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="612.0" layoutY="81.0" text="Temperatura mínima (ºC)" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="609.0" layoutY="106.0" text="Temperatura máxima (ºC)" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="630.0" layoutY="131.0" text="Set-point caldeira (ºC)" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="912.0" layoutY="131.0" text="Operadores" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="971.0" layoutY="56.0" text="Horário de início" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="923.0" layoutY="81.0" text="Horário de encerramento" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="956.0" layoutY="106.0" text="Tempo de processo" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblCodigo" alignment="CENTER" layoutX="444.0" layoutY="56.0" prefWidth="80.0" style="-fx-background-color: #FFE4E1;" text="0" textFill="#054199">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblLote" alignment="CENTER" layoutX="444.0" layoutY="81.0" prefWidth="80.0" style="-fx-background-color: #FFE4E1;" text="0" textFill="#054199">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblQuantidade" alignment="CENTER" layoutX="444.0" layoutY="106.0" prefWidth="80.0" style="-fx-background-color: #FFE4E1;" text="000,00" textFill="#054199">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblProducao" alignment="CENTER" layoutX="444.0" layoutY="131.0" prefWidth="80.0" style="-fx-background-color: #FFE4E1;" text="000,00" textFill="#054199">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblTempMin" alignment="CENTER" layoutX="765.0" layoutY="81.0" prefWidth="80.0" style="-fx-background-color: #FFE4E1;" text="00.0" textFill="#054199">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblTempMax" alignment="CENTER" layoutX="765.0" layoutY="106.0" prefWidth="80.0" style="-fx-background-color: #FFE4E1;" text="00.0" textFill="#054199">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblSetPoint" alignment="CENTER" layoutX="765.0" layoutY="131.0" prefWidth="80.0" style="-fx-background-color: #FFE4E1;" text="00.0" textFill="#054199">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblOperador" alignment="CENTER" layoutX="984.0" layoutY="131.0" prefHeight="17.0" prefWidth="172.0" style="-fx-background-color: #FFE4E1;" textFill="#054199">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblInicio" alignment="CENTER" layoutX="1076.0" layoutY="56.0" prefWidth="80.0" style="-fx-background-color: #FFE4E1;" text="00:00:00" textFill="#054199">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblEncerramento" alignment="CENTER" layoutX="1076.0" layoutY="81.0" prefWidth="80.0" style="-fx-background-color: #FFE4E1;" text="00:00:00" textFill="#054199">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblTempoProcesso" alignment="CENTER" layoutX="1076.0" layoutY="106.0" prefWidth="80.0" style="-fx-background-color: #FFE4E1;" text="00:00:00" textFill="#054199">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="718.0" layoutY="56.0" text="Reator" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblReator" alignment="CENTER" layoutX="765.0" layoutY="56.0" prefWidth="80.0" style="-fx-background-color: #FFE4E1;" textFill="#054199">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <!-- MaskTextField fx:id="txtLote" layoutX="56.0" layoutY="107.0" mask="NNNNNNNNN" /-->
+      <ProgressIndicator fx:id="progB" layoutX="757.0" layoutY="68.0" prefHeight="66.0" prefWidth="95.0" style="-fx-progress-color: #E0FFFF;" visible="false" />
+      <ProgressIndicator fx:id="progA" layoutX="437.0" layoutY="68.0" prefHeight="66.0" prefWidth="95.0" style="-fx-progress-color: #E0FFFF;" visible="false" />
+      <ProgressIndicator fx:id="progC" layoutX="1069.0" layoutY="68.0" prefHeight="66.0" prefWidth="95.0" style="-fx-progress-color: #E0FFFF;" visible="false" />
+      <ProgressIndicator fx:id="progD" layoutX="557.0" layoutY="360.0" prefHeight="66.0" prefWidth="95.0" style="-fx-progress-color: green;" visible="false" />
+      <Button fx:id="btReport" disable="true" layoutX="40.0" layoutY="49.0" mnemonicParsing="false" onAction="#saveReport" prefHeight="28.0" prefWidth="32.0" styleClass="btReport" stylesheets="@../style/style.css">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="btXls" disable="true" layoutX="72.0" layoutY="49.0" mnemonicParsing="false" onAction="#saveXls" prefHeight="28.0" prefWidth="32.0" styleClass="btXls" stylesheets="@../style/style.css">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="btClear" layoutX="8.0" layoutY="49.0" mnemonicParsing="false" onAction="#clearConsulta" prefHeight="28.0" prefWidth="32.0" styleClass="btClear" stylesheets="@../style/style.css">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <ProgressIndicator fx:id="progReport" layoutX="83.0" layoutY="65.0" prefHeight="68.0" prefWidth="95.0" style="-fx-progress-color: #E0FFFF;" visible="false" />
+      <ImageView fx:id="imgEstatica" fitHeight="42.0" fitWidth="138.0" layoutX="1083.0" layoutY="607.0" onMouseClicked="#handleImgEstaticaAction" onMouseEntered="#hoverImgEstatica" onMouseExited="#unhoverImgEstatica" opacity="0.2" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../style/logotipo.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <MaskTextField fx:id="txtLote" layoutX="56.0" layoutY="107.0" mask="NNNNNNNNNNN" />
+      <Button fx:id="btConfigChart" layoutX="1093.0" layoutY="178.0" mnemonicParsing="false" onAction="#openConfigLineChart" text="Configurações">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <!-- MaskTextField fx:id="txtLote" layoutX="56.0" layoutY="107.0" mask="NNNNNNNNN" /-->
+   </children>
+</AnchorPane>

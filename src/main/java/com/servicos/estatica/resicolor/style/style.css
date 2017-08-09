@@ -1,0 +1,76 @@
+.myGradient {
+	-fx-background-color: linear-gradient(to bottom, rgba(29.0, 143.0, 29.0, 1.0) 0.0%,
+		rgba(24.0, 118.0, 24.0, 1.0) 9.0%, rgba(24.0, 118.0, 24.0, 1.0) 9.0%, rgba(19.0, 93.0, 19.0, 1.0)
+		33.0%, rgba(0.0, 60.0, 0.0, 1.0) 67.0%, rgba(0.0, 38.0, 0.0, 1.0) 83.0%, rgba(0.0, 16.0, 0.0, 1.0)
+		100.0%);
+}
+
+.chart-title {
+  -fx-text-fill: white;
+  -fx-font-size: 20.0px;
+  -fx-font-weight: bold;
+  -fx-font-family: Consolas;
+}
+
+.axis-label {
+	-fx-text-fill: white;
+	-fx-font-size: 19.0px;
+	-fx-font-weight: bold
+}
+
+.chart-series-line {    
+    -fx-stroke-width: 1.0px;
+    -fx-effect: null;
+}
+/*
+.chart-plot-background {
+    -fx-background-color:  rgba(0.0,255.0,126.0,0.0);
+} */
+
+.default-color0.chart-series-line { 
+	-fx-stroke: #FFFF00; 
+}
+
+.chart-vertical-grid-lines {
+    -fx-stroke: rgba(0.0,255.0,126.0,0.0);
+}
+
+.btStyleClock {
+  -fx-graphic: url('clock_edit.png');
+}
+
+.btNovo {
+  -fx-graphic: url('add.png');
+}
+
+.btEdit {
+  -fx-graphic: url('application_edit.png');
+}
+
+.btCancela {
+  -fx-graphic: url('delete.png');
+}
+
+.btReport {
+  -fx-graphic: url('report.png');
+}
+
+.btXls {
+  -fx-graphic: url('page_excel.png');
+}
+
+.btClear {
+  -fx-graphic: url('broom.png');
+}
+
+.btConsultar {
+  -fx-graphic: url('page_white_magnify.png');
+}
+
+.btAtualizar {
+  -fx-graphic: url('arrow_refresh.png');
+}
+
+.btCancelar {
+  -fx-graphic: url('cancel.png');
+}
