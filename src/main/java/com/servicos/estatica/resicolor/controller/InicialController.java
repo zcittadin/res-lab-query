@@ -241,7 +241,8 @@ public class InicialController implements Initializable, ControlledScreen {
 					public ObservableValue<String> call(CellDataFeatures<Produto, String> cell) {
 						final Produto p = cell.getValue();
 						final SimpleObjectProperty<String> simpleObject = new SimpleObjectProperty<String>(
-								new SimpleDateFormat("dd/MM/yyyy").format(p.getDtInicial()));
+								p.getDtInicial() == null ? "Sem registro"
+										: new SimpleDateFormat("dd/MM/yyyy").format(p.getDtInicial()));
 						return simpleObject;
 					}
 				});
@@ -250,7 +251,8 @@ public class InicialController implements Initializable, ControlledScreen {
 					public ObservableValue<String> call(CellDataFeatures<Produto, String> cell) {
 						final Produto p = cell.getValue();
 						final SimpleObjectProperty<String> simpleObject = new SimpleObjectProperty<String>(
-								new SimpleDateFormat("HH:mm:ss").format(p.getDtInicial()));
+								p.getDtInicial() == null ? "Sem registro"
+										: new SimpleDateFormat("HH:mm:ss").format(p.getDtInicial()));
 						return simpleObject;
 					}
 				});
@@ -259,7 +261,8 @@ public class InicialController implements Initializable, ControlledScreen {
 					public ObservableValue<String> call(CellDataFeatures<Produto, String> cell) {
 						final Produto p = cell.getValue();
 						final SimpleObjectProperty<String> simpleObject = new SimpleObjectProperty<String>(
-								new SimpleDateFormat("HH:mm:ss").format(p.getDtFinal()));
+								p.getDtFinal() == null ? "Sem registro"
+										: new SimpleDateFormat("HH:mm:ss").format(p.getDtFinal()));
 						return simpleObject;
 					}
 				});
@@ -268,8 +271,10 @@ public class InicialController implements Initializable, ControlledScreen {
 					public ObservableValue<String> call(CellDataFeatures<Produto, String> cell) {
 						final Produto p = cell.getValue();
 						final SimpleObjectProperty<String> simpleObject = new SimpleObjectProperty<String>(
-								PeriodFormatter.formatPeriod(p.getDtInicial(), p.getDtFinal()));
-						tempo = PeriodFormatter.formatPeriod(p.getDtInicial(), p.getDtFinal());
+								p.getDtInicial() == null || p.getDtFinal() == null ? "Sem registro"
+										: PeriodFormatter.formatPeriod(p.getDtInicial(), p.getDtFinal()));
+						if (p.getDtInicial() != null && p.getDtFinal() != null)
+							tempo = PeriodFormatter.formatPeriod(p.getDtInicial(), p.getDtFinal());
 						return simpleObject;
 					}
 				});
