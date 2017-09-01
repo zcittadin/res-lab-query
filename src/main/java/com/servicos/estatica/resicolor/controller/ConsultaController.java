@@ -686,13 +686,14 @@ public class ConsultaController implements Initializable, ControlledScreen {
 	}
 
 	private void populateFields() {
+		int size = produto.getProcessos().size();
 		lblCodigo.setText(String.valueOf(produto.getCodigo()));
 		lblLote.setText(String.valueOf(produto.getLote()));
 		lblQuantidade.setText(String.valueOf(produto.getQuantidade()));
 		lblReator.setText(produto.getNomeReator());
 		lblTempMin.setText(String.valueOf(ProducaoUtil.getTempMin(produto)));
 		lblTempMax.setText(String.valueOf(ProducaoUtil.getTempMax(produto)));
-		lblSetPoint.setText(String.valueOf(produto.getProcessos().get(0).getSpCaldeira()));
+		lblSetPoint.setText(String.valueOf(produto.getProcessos().get(size - 1).getSpCaldeira()));
 		lblInicio.setText(horasSdf.format(produto.getDtInicial()));
 		lblEncerramento.setText(produto.getDtFinal() != null ? horasSdf.format(produto.getDtFinal()) : "");
 		if (produto.getDtFinal() != null && produto.getDtInicial() != null) {
